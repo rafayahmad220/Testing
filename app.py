@@ -19,3 +19,35 @@ pipeline = pipeline(
     num_return_sequences=1,
     eos_token_id=tokenizer.eos_token_id
 )
+
+llm = HuggingFacePipeline(pipeline = pipeline, model_kwargs = {'temperature':0})
+
+from langchain import PromptTemplate,  LLMChain
+
+template = """
+You are an intelligent chatbot. Help the following question with answers.
+Question: {question}
+Answer:"""
+prompt = PromptTemplate(template=template, input_variables=["question"])
+
+llm_chain = LLMChain(prompt=prompt, llm=llm)
+
+question = "Explain what is Artificial Intellience "
+
+print(llm_chain.run(question))
+
+"""AI is like the sun that shines,
+Bringing happiness and knowledge to everyone.
+It helps us in many ways,
+From finding answers to complex questions.
+AI can do amazing things,
+That we can't even imagine yet!
+AI is like a powerful tool,
+That can help us solve any riddle.
+It can even predict the future,
+Based on current situations and trends.
+AI is here to stay,
+And will be an essential element in our lives,
+Providing a better tomorrow
+and an even brighter future!
+"""
