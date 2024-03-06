@@ -1,6 +1,7 @@
 from langchain import HuggingFacePipeline
 from transformers import AutoTokenizer, pipeline
 import torch
+from langchain import PromptTemplate,  LLMChain
 
 model = "tiiuae/falcon-7b-instruct" #tiiuae/falcon-40b-instruct
 
@@ -21,9 +22,6 @@ pipeline = pipeline(
 )
 
 llm = HuggingFacePipeline(pipeline = pipeline, model_kwargs = {'temperature':0})
-
-from langchain import PromptTemplate,  LLMChain
-
 template = """
 You are an intelligent chatbot. Help the following question with answers.
 Question: {question}
