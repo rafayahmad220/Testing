@@ -1,7 +1,3 @@
-!pip install -q transformers einops accelerate langchain bitsandbytes
-
-!nvidia-smi
-
 from langchain import HuggingFacePipeline
 from transformers import AutoTokenizer, pipeline
 import torch
